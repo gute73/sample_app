@@ -1,0 +1,206 @@
+/*
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+
+/*
+editor.css
+============
+
+This is he heart of the skin system. This is the file loaded by the editor to
+style all elements inside its main interface.
+
+To make it easier to maintain, instead of including all styles here, we import
+other files.
+*/
+
+/* "Reset" styles, necessary to avoid the editor UI being broken by external CSS. */
+@import url("reset.css");
+
+/* Styles the main interface structure (holding box). */
+@import url("mainui.css");
+
+/* Styles all "panels", which are the floating elements that appear when
+   opening toolbar combos, menu buttons, context menus, etc. */ 
+@import url("panel.css");
+
+/* Styles the color panel displayed by the color buttons. */
+@import url("colorpanel.css");
+
+/* Styles to toolbar. */
+@import url("toolbar.css");
+
+/* Styles menus, which are lists of selectable items (context menu, menu button). */
+@import url("menu.css");
+
+/* Styles toolbar combos. */
+@import url("richcombo.css");
+
+/* Styles the elements path bar, available at the bottom of the editor UI.*/
+@import url("elementspath.css");
+
+/* Contains hard-coded presets for "configurable-like" options of the UI
+   (e.g. display labels on specific buttons) */
+@import url("presets.css");
+
+/* Important!
+   To avoid showing the editor UI while its styles are still not available, the
+   editor creates it with visibility:hidden. Here, we restore the UI visibility. */
+.cke_chrome
+{
+	visibility: inherit;
+}
+
+/* For accessibility purposes, several "voice labels" are present in the UI.
+   These are usually <span> elements that show not be visible, but that are
+   used by screen-readers to announce other elements. Here, we hide these
+   <spans>, in fact. */
+.cke_voice_label
+{
+	display: none;
+}
+
+legend.cke_voice_label
+{
+	display: none;
+}
+
+/* Custom CSS */
+/**
+ *	CKEditor editables are automatically set with the "cke_editable" class
+ *	plus cke_editable_(inline|themed) depending on the editor type.
+ */
+
+/* Style a bit the inline editables. */
+.cke_editable.cke_editable_inline, .contentEditable
+{
+	cursor: pointer;
+}
+
+/* Once an editable element gets focused, the "cke_focus" class is
+   added to it, so we can style it differently. */
+.cke_editable.cke_editable_inline.cke_focus
+{
+	box-shadow: inset 0px 0px 20px 3px #ddd, inset 0 0 1px #000;
+	outline: none;
+	/*background: #eee;*/
+	cursor: text;
+}
+
+/* Avoid pre-formatted overflows inline editable. */
+.cke_editable_inline pre
+{
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.cke_button__codeembed .cke_button_label{
+	display: inline !important;
+}
+
+/* Notifications */
+.cke_notifications_area {
+    pointer-events: none
+}
+.cke_notification {
+    pointer-events: auto;
+    position: relative;
+    margin: 10px;
+    width: 300px;
+    color: white;
+    border-radius: 3px;
+    text-align: center;
+    opacity: .95;
+    filter: alpha(opacity 95);
+    box-shadow: 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
+    -webkit-animation: fadeIn .7s;
+    animation: fadeIn .7s
+}
+.cke_notification_message a {
+    color: #12306f
+}
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: .95
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: .95
+    }
+}
+.cke_notification_success {
+    background: #72b572;
+    border: 1px solid #63a563
+}
+.cke_notification_warning {
+    background: #c83939;
+    border: 1px solid #902b2b
+}
+.cke_notification_info {
+    background: #2e9ad0;
+    border: 1px solid #0f74a8
+}
+.cke_notification_info span.cke_notification_progress {
+    background-color: #0f74a8;
+    display: block;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1
+}
+.cke_notification_message {
+    position: relative;
+    margin: 4px 23px 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    z-index: 4;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+.cke_notification_close {
+    background-image: url(images/close.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position: absolute;
+    cursor: pointer;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    top: 1px;
+    right: 1px;
+    padding: 0;
+    margin: 0;
+    z-index: 5;
+    opacity: .6;
+    filter: alpha(opacity 60)
+}
+.cke_notification_close:hover {
+    opacity: 1;
+    filter: alpha(opacity 100)
+}
+.cke_notification_close span {
+    display: none
+}
+.cke_notification_warning a.cke_notification_close {
+    opacity: .8;
+    filter: alpha(opacity 80)
+}
+.cke_notification_warning a.cke_notification_close:hover {
+    opacity: 1;
+    filter: alpha(opacity 100)
+}
+
+/* show Code Snippet label */
+.cke_button__codesnippet .cke_button_label {
+    display: inline !important;
+}
